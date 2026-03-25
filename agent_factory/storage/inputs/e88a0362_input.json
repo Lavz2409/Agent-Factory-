@@ -1,0 +1,19 @@
+{
+  "intent": "Build the system described in the user request",
+  "constraints": [
+    "must be modular",
+    "production ready",
+    "well documented"
+  ],
+  "domain": "software engineering",
+  "expected_output": "complete working Python application",
+  "complexity": "medium",
+  "success_criteria": [
+    "runs without errors",
+    "meets documented requirements"
+  ],
+  "suggested_agents": [
+    "architect",
+    "coder"
+  ]
+}

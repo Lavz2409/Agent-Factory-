@@ -1,0 +1,20 @@
+{
+  "intent": "Develop a Python application with distinct layers for input, processing, and storage.",
+  "constraints": [
+    "The application must be highly modular.",
+    "The application must be written in Python.",
+    "There must be separate layers for input, processing, and storage."
+  ],
+  "domain": "CLI tooling",
+  "expected_output": "A Python application with separate modules for handling input, processing data, and managing storage.",
+  "complexity": "medium",
+  "success_criteria": [
+    "The application is modular with distinct input, processing, and storage layers.",
+    "The application is functional and written in Python.",
+    "Each layer is encapsulated and can be modified independently."
+  ],
+  "suggested_agents": [
+    "architect",
+    "coder"
+  ]
+}

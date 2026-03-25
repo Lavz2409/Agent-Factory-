@@ -1,0 +1,20 @@
+{
+  "intent": "Develop a Python application with distinct layers for input, processing, and storage.",
+  "constraints": [
+    "The application must be highly modular.",
+    "The application must be written in Python.",
+    "There must be separate layers for input, processing, and storage."
+  ],
+  "domain": "Software Development",
+  "expected_output": "A Python application with separate layers for input, processing, and storage.",
+  "complexity": "medium",
+  "success_criteria": [
+    "The application is modular with distinct layers for input, processing, and storage.",
+    "The application is written in Python.",
+    "The application functions as intended without errors."
+  ],
+  "suggested_agents": [
+    "architect",
+    "coder"
+  ]
+}

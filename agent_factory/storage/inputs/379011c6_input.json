@@ -1,0 +1,21 @@
+{
+  "intent": "Create a Python CLI application for managing notes with add and view functionalities.",
+  "constraints": [
+    "The application must be written in Python.",
+    "The application must be a CLI tool.",
+    "The application must support adding notes.",
+    "The application must support viewing notes."
+  ],
+  "domain": "CLI tooling",
+  "expected_output": "A Python CLI application that allows users to add and view notes.",
+  "complexity": "medium",
+  "success_criteria": [
+    "The application can be successfully installed and run from the command line.",
+    "The application can add notes and store them persistently.",
+    "The application can retrieve and display stored notes."
+  ],
+  "suggested_agents": [
+    "architect",
+    "coder"
+  ]
+}

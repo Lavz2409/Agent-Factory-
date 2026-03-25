@@ -1,0 +1,15 @@
+{
+  "intent": "Develop a FastAPI CRUD API",
+  "constraints": [],
+  "domain": "web development",
+  "expected_output": "A FastAPI CRUD API with endpoints for creating, reading, updating, and deleting records",
+  "complexity": "medium",
+  "success_criteria": [
+    "API should have endpoints for CRUD operations",
+    "API should be functional and handle basic CRUD operations correctly"
+  ],
+  "suggested_agents": [
+    "architect",
+    "coder"
+  ]
+}

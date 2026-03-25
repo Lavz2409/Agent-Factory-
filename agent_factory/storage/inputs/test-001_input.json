@@ -1,0 +1,17 @@
+{
+  "intent": "Build a REST API using FastAPI",
+  "constraints": [
+    "valid JSON only",
+    "runnable Python"
+  ],
+  "domain": "web development",
+  "expected_output": "working Python project",
+  "complexity": "medium",
+  "success_criteria": [
+    "runs without errors"
+  ],
+  "suggested_agents": [
+    "architect",
+    "coder"
+  ]
+}

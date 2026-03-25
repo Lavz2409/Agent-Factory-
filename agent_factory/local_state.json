@@ -1,0 +1,1586 @@
+{
+  "90fb3b0e": {
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.2s"
+      },
+      "overall_passed": true
+    },
+    "updated_at": "2026-03-25T04:00:39.045690"
+  },
+  "d6e5c62f": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:39.204350",
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    }
+  },
+  "111c4403": {
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "updated_at": "2026-03-25T04:00:39.296316",
+    "status": "complete",
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "8e2123af": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:39.486482",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "e88a0362": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:39.695030",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "560b87bd": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:40.538104",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "c545af1e": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:40.786095",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "e0588254": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:40.996210",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "ca5f5726": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:41.181479",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "0d744908": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:41.492358",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.2s"
+      },
+      "overall_passed": true
+    }
+  },
+  "3d9608d0": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:41.645777",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "d5af450f": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:41.874531",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "583e52ba": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:00:42.077302",
+    "user_request": "Build a highly modular Python application with separate layers for input, processing, and storage.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "db973c94": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:03:31.405426",
+    "user_request": "Build a Python CLI app to manage notes with add and view options.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "f9ea816d": {
+    "status": "complete",
+    "updated_at": "2026-03-25T04:03:42.876250",
+    "user_request": "Build a Python CLI app to manage notes with add and view options.",
+    "input_parsed": {
+      "intent": "Build the system described in the user request",
+      "constraints": [
+        "must be modular",
+        "production ready",
+        "well documented"
+      ],
+      "domain": "software engineering",
+      "expected_output": "complete working Python application",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors",
+        "meets documented requirements"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a clean architecture first, then implement it fully",
+      "rag_patterns_used": 0,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design the full system architecture with components and data flow",
+          "context": "Focus on modularity and clean interfaces between components"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the complete system in Python based on the architecture",
+          "context": "Write production-ready code with proper error handling"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "MainApplication",
+          "responsibility": "Entry point and request routing",
+          "interfaces": [
+            "run()",
+            "handle_request()",
+            "shutdown()"
+          ]
+        },
+        {
+          "name": "DataProcessor",
+          "responsibility": "Core business logic and data transformation",
+          "interfaces": [
+            "process(data)",
+            "validate(input)",
+            "transform(payload)"
+          ]
+        },
+        {
+          "name": "StorageLayer",
+          "responsibility": "Persistence and retrieval of application data",
+          "interfaces": [
+            "save(record)",
+            "fetch(id)",
+            "list_all()"
+          ]
+        }
+      ],
+      "data_flow": "1. Request arrives at MainApplication -> 2. DataProcessor validates and transforms -> 3. StorageLayer persists result -> 4. Response returned to caller",
+      "file_structure": [
+        "main.py",
+        "processor.py",
+        "storage.py",
+        "models.py",
+        "config.py"
+      ],
+      "dependencies": [],
+      "architecture_notes": "Layered architecture with clear separation of concerns. Each component has a single responsibility.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "A modular Python application with a DataProcessor class handling core logic and a simple in-memory store.",
+      "how_to_run": "python main.py",
+      "dependencies_to_install": []
+    },
+    "quality_gates": {
+      "design_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "code_validation": {
+        "passed": true,
+        "issues": []
+      },
+      "security_scan": {
+        "passed": true,
+        "warnings": []
+      },
+      "sla_enforcement": {
+        "passed": true,
+        "message": "SLA OK: 0.1s"
+      },
+      "overall_passed": true
+    }
+  },
+  "test-run-001": {
+    "status": "testing",
+    "updated_at": "2026-03-25T06:56:58.237055"
+  },
+  "test-001": {
+    "input_parsed": {
+      "intent": "Build a REST API using FastAPI",
+      "constraints": [
+        "valid JSON only",
+        "runnable Python"
+      ],
+      "domain": "web development",
+      "expected_output": "working Python project",
+      "complexity": "medium",
+      "success_criteria": [
+        "runs without errors"
+      ],
+      "suggested_agents": [
+        "architect",
+        "coder"
+      ]
+    },
+    "updated_at": "2026-03-25T06:56:58.284672",
+    "status": "code_complete",
+    "plan": {
+      "project_name": "generated_project",
+      "strategy": "Design a FastAPI service with routers and Pydantic models, then implement endpoints.",
+      "rag_patterns_used": 3,
+      "tasks": [
+        {
+          "agent": "architect",
+          "task": "Design FastAPI app structure: routers, models, dependency injection, in-memory store",
+          "context": "Use FastAPI and Pydantic; stateless HTTP API"
+        },
+        {
+          "agent": "coder",
+          "task": "Implement the FastAPI application with CRUD routes and example usage",
+          "context": "fastapi, uvicorn, pydantic"
+        }
+      ]
+    },
+    "architect_output": {
+      "components": [
+        {
+          "name": "FastAPIApp",
+          "responsibility": "Application factory and route registration",
+          "interfaces": [
+            "create_app()"
+          ]
+        },
+        {
+          "name": "ApiRouter",
+          "responsibility": "HTTP endpoints and request validation",
+          "interfaces": [
+            "get_items()",
+            "post_item()"
+          ]
+        },
+        {
+          "name": "Models",
+          "responsibility": "Pydantic schemas for request/response bodies",
+          "interfaces": [
+            "Item",
+            "ItemCreate"
+          ]
+        }
+      ],
+      "data_flow": "1. HTTP request \u2192 FastAPI routing \u2192 2. Pydantic validation \u2192 3. handler logic \u2192 4. JSON response",
+      "file_structure": [
+        "main.py"
+      ],
+      "dependencies": [
+        "fastapi",
+        "uvicorn",
+        "pydantic"
+      ],
+      "architecture_notes": "Mock architecture aligned to request keywords.",
+      "entry_point": "main.py"
+    },
+    "coder_output": {
+      "filename": "main.py",
+      "explanation": "Executable mock code keyed to request keywords.",
+      "how_to_run": "uvicorn main:app --reload",
+      "dependencies_to_install": [
+        "fastapi",
+        "uvicorn",
+        "pydantic"
+      ]
+    }
+  }
+}
