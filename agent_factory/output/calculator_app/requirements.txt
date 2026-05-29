@@ -1,0 +1,8 @@
+axios
+express
+httpx
+jest
+pytest
+pytest-json-report
+react
+react-dom

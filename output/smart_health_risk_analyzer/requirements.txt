@@ -1,0 +1,6 @@
+bcryptjs
+cors
+express
+jsonwebtoken
+mongoose
+multer

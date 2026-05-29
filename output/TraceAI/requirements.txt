@@ -1,0 +1,6 @@
+fastapi[all]
+opencv-python
+pandas
+psycopg2-binary
+sqlalchemy
+tensorflow

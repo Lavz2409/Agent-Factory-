@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────────────────
+   THEME TOKENS
+   CSS custom properties consumed by Tailwind's colour palette and by inline
+   `style={{ … }}` props across the app.
+
+   Values are `R G B` triplets (no commas) so Tailwind's `<alpha-value>`
+   syntax works:  rgb(var(--c-bg) / <alpha-value>)
+   ────────────────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* ── Settings-system semantic tokens (used by new UI) ── */
+    --color-bg:          255 255 255;
+    --color-fg:           10  10  10;
+    --color-card:        249 250 251;
+    --color-card-fg:      24  24  27;
+    --color-border:      229 231 235;
+    --color-muted:       243 244 246;
+    --color-muted-fg:    107 114 128;
+    --color-primary:      59 130 246;
+    --color-primary-fg:  255 255 255;
+
+    /* ── LEGACY palette tokens (bg-bg, bg-surface, etc.) ──
+       Keep the NAMES identical to Tailwind's static palette so every
+       existing `className="bg-bg text-text border-border"` just works. */
+    --c-bg:          249 250 251;   /* was #0f0f1e — now subtle off-white */
+    --c-surface:     255 255 255;   /* was #13131f — now white card     */
+    --c-border:      229 231 235;   /* was #1e1e32 — now grey hairline  */
+    --c-muted:       156 163 175;   /* was #4a4a6a                       */
+    --c-text:         17  24  39;   /* was #e0e0f0                       */
+    --c-text-dim:    107 114 128;   /* was #7070a0                       */
+
+    /* ── App-shell / chrome tokens (used by inline styles in layout) ── */
+    --c-app-shell:   255 255 255;   /* body (was #080812)                */
+    --c-rail:        249 250 251;   /* side rails (was #0a0a16)          */
+
+    /* Hairline / divider inline borders
+       (dark mode used white@5%, light mode uses black@8%) */
+    --c-hairline:      0   0   0;
+    --a-hairline:      0.08;
+  }
+
+  html.dark {
+    --color-bg:           10  10  22;
+    --color-fg:          237 237 239;
+    --color-card:         19  19  31;
+    --color-card-fg:     237 237 239;
+    --color-border:       42  42  50;
+    --color-muted:        26  26  40;
+    --color-muted-fg:    112 112 160;
+    --color-primary:      59 130 246;
+    --color-primary-fg:  255 255 255;
+
+    --c-bg:           15  15  30;
+    --c-surface:      19  19  31;
+    --c-border:       30  30  50;
+    --c-muted:        74  74 106;
+    --c-text:        224 224 240;
+    --c-text-dim:    112 112 160;
+
+    --c-app-shell:     8   8  18;
+    --c-rail:         10  10  22;
+
+    --c-hairline:    255 255 255;
+    --a-hairline:    0.05;
+  }
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: rgb(var(--c-app-shell));
+    color:      rgb(var(--c-text));
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    transition:
+      background-color 200ms ease,
+      color            200ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html, body, #root { transition: none; }
+  }
+
+  ::-webkit-scrollbar        { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { background: rgb(var(--c-text-dim) / 0.25); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-text-dim) / 0.5); }
+
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-primary));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   LIGHT-MODE PALETTE CLASS OVERRIDES (belt-and-suspenders)
+
+   The static Tailwind palette (`bg-bg`, `bg-surface`, `text-text`, etc.) is
+   also wired to CSS variables in `tailwind.config.js`. These explicit
+   `html:not(.dark) .xxx` rules act as a safety net in case Tailwind's JIT
+   hasn't regenerated the classes yet, and guarantee the chrome paints
+   correctly in light mode. `!important` wins over Tailwind's own utility
+   output.  Dark mode is untouched (rules don't match when .dark is set).
+   ────────────────────────────────────────────────────────────────────────── */
+html:not(.dark) .bg-bg       { background-color: rgb(var(--c-bg))        !important; }
+html:not(.dark) .bg-surface  { background-color: rgb(var(--c-surface))   !important; }
+html:not(.dark) .bg-muted    { background-color: rgb(var(--c-muted))     !important; }
+html:not(.dark) .text-text   { color:            rgb(var(--c-text))      !important; }
+html:not(.dark) .text-textDim{ color:            rgb(var(--c-text-dim))  !important; }
+html:not(.dark) .text-muted  { color:            rgb(var(--c-muted))     !important; }
+html:not(.dark) .border-border { border-color:   rgb(var(--c-border))    !important; }
+
+/* Hardcoded arbitrary Tailwind values (`border-[#1e1e32]`, `bg-[#1e1e32]`,
+   `border-white/10`, `bg-white/3`) used inside PromptInput + AgentControls. */
+html:not(.dark) .border-\[\#1e1e32\]       { border-color: rgb(var(--c-border)) !important; }
+html:not(.dark) .hover\:border-\[\#2e2e4a\]:hover { border-color: rgb(0 0 0 / 0.16) !important; }
+html:not(.dark) .bg-\[\#1e1e32\]           { background-color: rgb(var(--c-muted) / 0.5) !important; }
+html:not(.dark) .border-white\/10          { border-color: rgb(0 0 0 / 0.12) !important; }
+html:not(.dark) .bg-white\/3               { background-color: rgb(0 0 0 / 0.03) !important; }
+html:not(.dark) .bg-white\/5               { background-color: rgb(0 0 0 / 0.04) !important; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   LIGHT-MODE INLINE-STYLE OVERRIDES
+   Many existing components ship inline colours that were designed for the
+   original dark-only palette (e.g. `rgba(255,255,255,0.03)`, `#0a0a16`).
+   These attribute-selector rules neutralise the worst of them when the UI
+   is in light mode, without requiring every component file to be edited.
+   ────────────────────────────────────────────────────────────────────────── */
+html:not(.dark) [style*="background: rgba(8,8,18"],
+html:not(.dark) [style*="background:rgba(8,8,18"],
+html:not(.dark) [style*="background: #080812"],
+html:not(.dark) [style*="background:#080812"] {
+  background: rgb(255 255 255 / 0.92) !important;
+}
+
+html:not(.dark) [style*="background: #0a0a16"],
+html:not(.dark) [style*="background:#0a0a16"],
+html:not(.dark) [style*="background: rgba(10,10,22"],
+html:not(.dark) [style*="background:rgba(10,10,22"] {
+  background: rgb(249 250 251) !important;
+}
+
+html:not(.dark) [style*="background: #0f0f1e"],
+html:not(.dark) [style*="background:#0f0f1e"] {
+  background: rgb(249 250 251) !important;
+}
+
+html:not(.dark) [style*="background: #13131f"],
+html:not(.dark) [style*="background:#13131f"],
+html:not(.dark) [style*="background: rgba(19,19,31"],
+html:not(.dark) [style*="background:rgba(19,19,31"] {
+  background: rgb(255 255 255) !important;
+}
+
+/* Semi-transparent white surfaces (glassy cards in dark mode) must become
+   semi-transparent BLACK in light mode, otherwise they disappear.
+   Match both comma-tight and comma-spaced serialisations. */
+html:not(.dark) [style*="rgba(255,255,255,0.03)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.03)"] {
+  background-color: rgb(0 0 0 / 0.03) !important;
+}
+html:not(.dark) [style*="rgba(255,255,255,0.04)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.04)"] {
+  background-color: rgb(0 0 0 / 0.04) !important;
+}
+html:not(.dark) [style*="rgba(255,255,255,0.05)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.05)"] {
+  background-color: rgb(0 0 0 / 0.05) !important;
+  border-color:     rgb(0 0 0 / 0.08) !important;
+}
+html:not(.dark) [style*="rgba(255,255,255,0.06)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.06)"] {
+  background-color: rgb(0 0 0 / 0.05) !important;
+  border-color:     rgb(0 0 0 / 0.08) !important;
+}
+html:not(.dark) [style*="rgba(255,255,255,0.07)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.07)"] {
+  background-color: rgb(0 0 0 / 0.06) !important;
+  border-color:     rgb(0 0 0 / 0.08) !important;
+}
+html:not(.dark) [style*="rgba(255,255,255,0.08)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.08)"] {
+  border-color:     rgb(0 0 0 / 0.10) !important;
+}
+html:not(.dark) [style*="rgba(255,255,255,0.1)"],
+html:not(.dark) [style*="rgba(255, 255, 255, 0.1)"] {
+  border-color:     rgb(0 0 0 / 0.12) !important;
+}
+
+/* Dim text colours hardcoded in inline styles → swap to a readable light-mode grey */
+html:not(.dark) [style*="color: #4a4a6a"],
+html:not(.dark) [style*="color:#4a4a6a"],
+html:not(.dark) [style*="color: #3d3d5c"],
+html:not(.dark) [style*="color:#3d3d5c"],
+html:not(.dark) [style*="color: #2d2d4a"],
+html:not(.dark) [style*="color:#2d2d4a"],
+html:not(.dark) [style*="color: #7070a0"],
+html:not(.dark) [style*="color:#7070a0"] {
+  color: rgb(107 114 128) !important; /* #6b7280 — neutral-500 */
+}
+
+/* Light-coloured text (meant to be visible on dark bg) must darken in light mode. */
+html:not(.dark) [style*="color: #e2e8f0"],
+html:not(.dark) [style*="color:#e2e8f0"],
+html:not(.dark) [style*="color: #e0e0f0"],
+html:not(.dark) [style*="color:#e0e0f0"],
+html:not(.dark) [style*="color: #ededed"],
+html:not(.dark) [style*="color:#ededed"] {
+  color: rgb(17 24 39) !important; /* #111827 */
+}
+
+@layer components {
+  /* Premium glassmorphism panel */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+  }
+  html:not(.dark) .glass {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-strong {
+    background: rgba(10, 10, 25, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  }
+  html:not(.dark) .glass-strong {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Agent status rings — unchanged in both themes (brand colours) */
+  .agent-running {
+    box-shadow: 0 0 0 2px rgba(0, 217, 255, 0.4), 0 0 20px rgba(0, 217, 255, 0.15);
+  }
+  .agent-success {
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.4), 0 0 14px rgba(34, 197, 94, 0.12);
+  }
+  .agent-error {
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.4), 0 0 14px rgba(239, 68, 68, 0.12);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 8px currentColor, 0 0 20px currentColor;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+  .btn-gradient:hover { opacity: 0.9; transform: scale(1.02); }
+  .btn-gradient:active { transform: scale(0.98); }
+
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      transparent, transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .tab-active-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    border-radius: 1px 1px 0 0;
+  }
+
+  /* Settings drawer card */
+  .settings-card {
+    background:    rgb(var(--color-card));
+    color:         rgb(var(--color-card-fg));
+    border:        1px solid rgb(var(--color-border));
+    border-radius: 12px;
+  }
+
+  /* Generic icon button (header gear, drawer close, etc.) */
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    color: rgb(var(--color-muted-fg));
+    border: 1px solid transparent;
+    background: transparent;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  }
+  .icon-btn:hover {
+    background: rgb(var(--color-muted) / 0.6);
+    color:      rgb(var(--color-fg));
+  }
+  .icon-btn:focus-visible {
+    border-color: rgb(var(--color-primary));
+  }
+}
+
+/* Monaco editor — dark colours in dark, bright in light */
+html.dark .monaco-editor .margin { background: #080812 !important; }
+html.dark .monaco-editor,
+html.dark .monaco-editor-background,
+html.dark .monaco-editor .inputarea.ime-input {
+  background: #080812 !important;
+}
+
+html:not(.dark) .monaco-editor .margin { background: #ffffff !important; }
+html:not(.dark) .monaco-editor,
+html:not(.dark) .monaco-editor-background,
+html:not(.dark) .monaco-editor .inputarea.ime-input {
+  background: #ffffff !important;
+}

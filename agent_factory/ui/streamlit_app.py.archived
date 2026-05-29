@@ -1,0 +1,104 @@
+from __future__ import annotations
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+import threading
+import time
+
+import streamlit as st
+
+from core.pipeline import AgentFactoryPipeline
+from core.state import PipelineState
+
+
+st.set_page_config(page_title="Agent Factory", layout="wide")
+st.title("Agent Factory — Phase 1")
+
+with st.sidebar:
+    st.header("Requirement")
+    requirement = st.text_area(
+        "Describe what you want to build:",
+        height=200,
+        placeholder="Build a REST API for a todo app with user auth...",
+    )
+    run_btn = st.button("Build It", type="primary")
+
+col1, col2 = st.columns([1, 2])
+
+AGENTS = ["PlannerAgent", "ResearcherAgent", "ArchitectAgent", "CoderAgent", "TesterAgent"]
+
+with col1:
+    st.subheader("Pipeline")
+    agent_status: dict[str, st.delta_generator.DeltaGenerator] = {}
+    for name in AGENTS:
+        agent_status[name] = st.empty()
+        agent_status[name].markdown(f"⬜ `{name}`")
+
+with col2:
+    st.subheader("Live Output")
+    log_area = st.empty()
+    result_area = st.empty()
+
+if run_btn and requirement:
+    pipeline = AgentFactoryPipeline()
+
+    # Create the state up-front so the UI thread can observe live updates.
+    shared_state = PipelineState(raw_requirement=requirement)
+    shared_state.status = shared_state.status  # no-op; keeps intent explicit
+
+    state_container = {"state": shared_state, "done": False}
+
+    def run_pipeline():
+        final_state = pipeline.run(requirement, state=state_container["state"])
+        state_container["state"] = final_state
+        state_container["done"] = True
+
+    thread = threading.Thread(target=run_pipeline, daemon=True)
+    thread.start()
+
+    # Poll for updates
+    while not state_container["done"]:
+        state = state_container.get("state")
+        if state:
+            for name in AGENTS:
+                if name == state.current_agent:
+                    agent_status[name].markdown(f"🔄 `{name}` — running...")
+                else:
+                    # Any prior log containing the agent name is enough to mark it completed.
+                    if state.logs and any(name in l for l in state.logs):
+                        agent_status[name].markdown(f"✅ `{name}`")
+
+            if state.logs:
+                log_area.code("\n".join(state.logs[-20:]))
+        time.sleep(0.5)
+
+    thread.join(timeout=1)
+    final_state = state_container["state"]
+
+    # Mark all complete
+    for name in AGENTS:
+        agent_status[name].markdown(f"✅ `{name}`")
+
+    st.subheader("Results")
+    tabs = st.tabs(["Generated Files", "Test Results", "Token Usage"])
+
+    with tabs[0]:
+        if final_state.generated_files:
+            selected = st.selectbox("File", list(final_state.generated_files.keys()))
+            st.code(final_state.generated_files[selected], language="python")
+        else:
+            st.info("No generated files found.")
+
+    with tabs[1]:
+        if final_state.test_passed:
+            st.success("All tests passed!")
+        else:
+            st.error("Tests failed")
+        if final_state.error_log:
+            st.code(final_state.error_log[:3000])
+
+    with tabs[2]:
+        st.json(final_state.token_usage)
+        st.caption(f"Output path: {final_state.output_path}")

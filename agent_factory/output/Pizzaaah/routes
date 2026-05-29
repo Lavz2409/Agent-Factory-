@@ -1,0 +1,24 @@
+javascript
+const express = require('express');
+const userController = require('../controllers/userController');
+const adminController = require('../controllers/adminController');
+const authMiddleware = require('../middlewares/authMiddleware');
+
+const router = express.Router();
+
+// User Routes
+router.post('/user/register', userController.register);
+router.post('/user/login', userController.login);
+router.get('/user/profile', authMiddleware.verifyToken, userController.getProfile);
+router.put('/user/profile', authMiddleware.verifyToken, userController.updateProfile);
+router.get('/user/orders', authMiddleware.verifyToken, userController.getOrders);
+router.post('/user/order', authMiddleware.verifyToken, userController.createOrder);
+
+// Admin Routes
+router.post('/admin/login', adminController.login);
+router.get('/admin/dashboard', authMiddleware.verifyAdmin, adminController.getDashboard);
+router.get('/admin/orders', authMiddleware.verifyAdmin, adminController.getAllOrders);
+router.put('/admin/order/:orderId', authMiddleware.verifyAdmin, adminController.updateOrderStatus);
+router.get('/admin/users', authMiddleware.verifyAdmin, adminController.getAllUsers);
+
+module.exports = router;

@@ -1,0 +1,93 @@
+javascript
+// controllers/orderController.js
+
+const Order = require('../models/Order');
+const Pizza = require('../models/Pizza');
+const User = require('../models/User');
+
+// Create a new order
+exports.createOrder = async (req, res) => {
+    try {
+        const { userId, pizzaId, quantity, address } = req.body;
+
+        // Validate user and pizza existence
+        const user = await User.findById(userId);
+        const pizza = await Pizza.findById(pizzaId);
+
+        if (!user || !pizza) {
+            return res.status(404).json({ message: 'User or Pizza not found' });
+        }
+
+        // Calculate total price
+        const totalPrice = pizza.price * quantity;
+
+        // Create order
+        const order = new Order({
+            user: userId,
+            pizza: pizzaId,
+            quantity,
+            address,
+            totalPrice,
+            status: 'Pending'
+        });
+
+        await order.save();
+        res.status(201).json(order);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+// Get all orders
+exports.getAllOrders = async (req, res) => {
+    try {
+        const orders = await Order.find().populate('user pizza');
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+// Get order by ID
+exports.getOrderById = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id).populate('user pizza');
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+// Update order status
+exports.updateOrderStatus = async (req, res) => {
+    try {
+        const { status } = req.body;
+        const order = await Order.findById(req.params.id);
+
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        order.status = status;
+        await order.save();
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+// Delete an order
+exports.deleteOrder = async (req, res) => {
+    try {
+        const order = await Order.findByIdAndDelete(req.params.id);
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+        res.status(200).json({ message: 'Order deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};

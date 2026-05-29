@@ -1,0 +1,13 @@
+# This directory is intended for database migration scripts.
+# It is typically managed by Alembic, a lightweight database migration tool for SQLAlchemy.
+
+# To initialize the Alembic environment, run:
+# alembic init migrations
+
+# After initializing, you can create a new migration script using:
+# alembic revision --autogenerate -m "Initial migration"
+
+# To apply migrations, use:
+# alembic upgrade head
+
+# Note: Ensure that your database URL is correctly set in alembic.ini

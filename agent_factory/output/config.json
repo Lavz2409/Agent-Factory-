@@ -1,0 +1,29 @@
+```
+json
+{
+  "keywords": {
+    "skills": ["Python", "Java", "C++", "SQL", "JavaScript"],
+    "experience": ["developer", "engineer", "manager", "analyst", "consultant"]
+  },
+  "sections": {
+    "required": ["Education", "Skills", "Experience"],
+    "optional": ["Projects", "Certifications", "Languages"]
+  },
+  "formatting": {
+    "simple_format": true,
+    "allowed_characters": "^[a-zA-Z0-9,.\\s]+$",
+    "disallowed_elements": ["tables", "images", "graphs"]
+  },
+  "scoring": {
+    "keyword_weight": 0.4,
+    "section_weight": 0.4,
+    "formatting_weight": 0.2,
+    "max_score": 100
+  },
+  "suggestions": {
+    "missing_keywords": "Consider adding more relevant keywords to highlight your skills and experience.",
+    "missing_sections": "Ensure all required sections are present in your resume.",
+    "formatting_issues": "Simplify the formatting to enhance ATS compatibility."
+  }
+}
+```

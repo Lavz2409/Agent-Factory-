@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Factory IDE</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!--
+      ── Anti-flicker theme bootstrapper ───────────────────────────────────
+      Runs synchronously before React / Vite hydrates so the correct `dark`
+      class is already on <html> when the first paint happens.
+      Keep this script dependency-free and tiny.
+      ──────────────────────────────────────────────────────────────────── -->
+    <script>
+      (function () {
+        try {
+          var key   = 'theme-preference';
+          var saved = localStorage.getItem(key);           // 'light' | 'dark' | 'system' | null
+          var valid = saved === 'light' || saved === 'dark' || saved === 'system';
+          // First-time users default to DARK (matches the IDE chrome).
+          // Change to 'system' if you prefer OS-driven first paint.
+          var pref  = valid ? saved : 'dark';
+
+          var sysDark = window.matchMedia &&
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark  = pref === 'dark' || (pref === 'system' && sysDark);
+
+          var root = document.documentElement;
+          root.classList.toggle('dark', isDark);
+          root.dataset.theme    = isDark ? 'dark' : 'light';
+          root.style.colorScheme = isDark ? 'dark' : 'light';
+        } catch (_) { /* storage blocked — fall through to dark */ }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
